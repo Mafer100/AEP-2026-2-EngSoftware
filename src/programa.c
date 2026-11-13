@@ -42,6 +42,8 @@ int main(void) {
             continue;
         }
         limparBuffer();
+        
+        system("cls");
 
         switch (opcao) {
             case 1:
@@ -67,6 +69,8 @@ int main(void) {
                 break;
         }
         printf("\n------------------------------------------------------------\n");
+        system("pause");
+        system("cls");
     } while (opcao != 0);
 
     return 0;
