@@ -112,7 +112,8 @@ void cadastrarAcao(Acao lista[], int *total) {
         }
 
         int duplicado = 0;
-        for (int i = 0; i < *total; i++) {
+        int i;
+        for (i = 0; i < *total; i++) {
             if (lista[i].codigo == nova.codigo) {
                 duplicado = 1;
                 break;
@@ -211,8 +212,8 @@ void listarAcoes(const Acao lista[], int total) {
     printf("%-6s | %-22s | %-20s | %-10s | %-10s | %-8s | %-8s\n",
            "COD", "ESCOLA", "TEMA", "DATA", "SITUACAO", "PREVISTO", "EFETIVO");
     printf("--------------------------------------------------------------------------------------------------------\n");
-
-    for (int i = 0; i < total; i++) {
+        int i;
+    for (i = 0; i < total; i++) {
         const char *statusStr;
         switch (lista[i].situacao) {
             case 1:  statusStr = "Planejada"; break;
@@ -259,8 +260,8 @@ void pesquisarAcao(const Acao lista[], int total) {
             return;
         }
         limparBuffer();
-
-        for (int i = 0; i < total; i++) {
+        int i;
+        for (i = 0; i < total; i++) {
             if (lista[i].codigo == codBusca) {
                 const char *statusStr = (lista[i].situacao == 1) ? "Planejada" :
                                         (lista[i].situacao == 2) ? "Realizada" : "Cancelada";
@@ -283,9 +284,9 @@ void pesquisarAcao(const Acao lista[], int total) {
         printf("Digite o termo de busca: ");
         fgets(termo, sizeof(termo), stdin);
         removerQuebraLinha(termo);
-
-        for (int i = 0; i < total; i++) {
-            char *alvo = (tipoBusca == 2) ? lista[i].escola : lista[i].tema;
+        int i;
+        for (i = 0; i < total; i++) {
+            const char *alvo = (tipoBusca == 2) ? lista[i].escola : lista[i].tema;
             if (strstr(alvo, termo) != NULL) {
                 const char *statusStr = (lista[i].situacao == 1) ? "Planejada" :
                                         (lista[i].situacao == 2) ? "Realizada" : "Cancelada";
@@ -326,7 +327,8 @@ void atualizarSituacao(Acao lista[], int total) {
     limparBuffer();
 
     int indice = -1;
-    for (int i = 0; i < total; i++) {
+    int i;
+    for (i = 0; i < total; i++) {
         if (lista[i].codigo == codBusca) {
             indice = i;
             break;
@@ -398,8 +400,9 @@ void gerarResumoGeral(const Acao lista[], int total) {
 
     int planejadas = 0, realizadas = 0, canceladas = 0;
     int totPrevisto = 0, totEfetivo = 0;
-
-    for (int i = 0; i < total; i++) {
+    
+    int i;
+    for (i = 0; i < total; i++) {
         if (lista[i].situacao == 1) planejadas++;
         else if (lista[i].situacao == 2) realizadas++;
         else if (lista[i].situacao == 3) canceladas++;
